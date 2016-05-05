@@ -14,11 +14,11 @@ shinyUI(fluidPage( #create the overall page
   # Sidebar with a radio box to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      radioButtons("Species", #the input variable that the value will go into
-                   "Choose a Species to display:",
-                   c("setosa",
-                     "versicolor",
-                     "virginica")
+      radioButtons("Trait", #the input variable that the value will go into
+                   "Choose a Traits to display:",
+                   c("Alu.Tol",
+                     "Protein.content",
+                     "Amylose.content")
       )),
     
     # Show a plot of the generated distribution

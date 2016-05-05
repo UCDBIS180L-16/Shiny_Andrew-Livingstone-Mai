@@ -13,15 +13,15 @@ shinyServer(function(input, output) {
   #  2) Its output type is a plot
   
   output$boxPlot <- renderPlot({
-    iris.species <- melt(iris, id ="Species")
-    iris.sub <- subset(iris.species, Species == input$Species)
+    load("~/Shiny_Andrew-Livingstone-Mai/data_from_Rice_lab.Rdata")
+    iris.sub <- subset(data.pheno.mds, popID == input$popID)
     # set up the plot
-    pl <- ggplot(data = iris.sub,
+    pl <- ggplot(data = data.pheno.mds,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
-                 aes_string(x="variable",
-                            y= "value",
-                            fill="variable"
+                 aes_string(x="popID",
+                            y= input$Trait,
+                            fill="Region" #population compare traits in Regions
                  )
     )
     
