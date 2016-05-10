@@ -4,12 +4,12 @@ library(shiny)
 shinyUI(fluidPage( #create the overall page
   
   # Application title
-  titlePanel("Rice Data"),
+  titlePanel("Rice Phenotypes and Geographic Variation"),
   
   # Some helpful information
-  helpText("This application creates a boxplot to show difference between",
-           "Regions and Populations.  Please use the select button below to choose a trait",
-           "for plotting"),
+  helpText("This application creates boxplots to explore the relationship and variation within",
+           "geographic region and between structured populations.  Please  choose a trait and region",
+           ", and observe how the populations vary."),
   
   # Sidebar with a selectbutton to input which trait will be plotted
   sidebarLayout(
@@ -28,8 +28,7 @@ shinyUI(fluidPage( #create the overall page
                     regions
         )),
     # Show a plot of the generated distribution
-    mainPanel(plotOutput("boxPlot"),
-              plotOutput("point")
+    mainPanel(plotOutput("boxPlot")
     )
   )
 )

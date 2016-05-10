@@ -46,11 +46,6 @@ shinyServer(function(input, output) {
     # draw the boxplot for the specified trait
     pl + geom_boxplot()
   })
-  output$point <- renderPlot({
-    data.sub <- subset(data.pheno.mds, Region == input$Subset)
-    ps <- ggplot(data.sub, aes(V1, V2), fill = "popID")
-    ps + geom_point()
-  })
 
 })
 
