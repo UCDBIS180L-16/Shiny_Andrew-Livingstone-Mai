@@ -4,22 +4,23 @@ library(shiny)
 shinyUI(fluidPage( #create the overall page
   
   # Application title
-  titlePanel("Iris Data"),
+  titlePanel("Rice Data"),
   
   # Some helpful information
   helpText("This application creates a boxplot to show difference between",
-           "iris species.  Please use the radio box below to choose a trait",
+           "Regions and Populations.  Please use the select button below to choose a trait",
            "for plotting"),
   
-  # Sidebar with a radio box to input which trait will be plotted
+  # Sidebar with a selectbutton to input which trait will be plotted
   sidebarLayout(
     sidebarPanel(
-      radioButtons("Trait", #the input variable that the value will go into
-                   "Choose a Traits to display:",
-                   c("Alu.Tol",
-                     "Protein.content",
-                     "Amylose.content")
-      )),
+      selectInput("Trait", #the input variable that the value will go into
+                  "Choose a Traits to display except (Leaf.pubescence which is in
+                  a true/false (1/0) scale:",
+                  numeric.traits
+      )
+    ),
+    
     
     # Show a plot of the generated distribution
     mainPanel(plotOutput("boxPlot")
