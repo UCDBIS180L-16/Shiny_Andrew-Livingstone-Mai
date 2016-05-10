@@ -44,4 +44,11 @@ shinyServer(function(input, output) {
     # draw the boxplot for the specified trait
     pl + geom_boxplot()
   })
+  output$point <- renderPlot({
+    ps <- ggplot(data.pheno.mds, aes(V1, V2, color = Region))
+    ps + geom_point()
+  })
+
 })
+
+
