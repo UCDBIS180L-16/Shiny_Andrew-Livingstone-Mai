@@ -23,6 +23,7 @@ numeric.traits = is.trait.numeric[is.trait.numeric==TRUE]
 # Let's get the names of those traits
 numeric.traits = names(numeric.traits)
 
+regions = levels(data.pheno.mds$Region)
 # We are going to ask user to chose one of these traits to plot
 
 
@@ -31,13 +32,14 @@ numeric.traits = names(numeric.traits)
 shinyServer(function(input, output) {
   
   output$boxPlot <- renderPlot({
-    # set up the plot
-    pl <- ggplot(data = data.pheno.mds,
+    # set up the plot   
+    data.sub <- subset(data.pheno.mds, Region == input$Subset)
+    pl <- ggplot(data = data.sub,
                  #Use aes_string below so that input$trait is interpreted
                  #correctly.  The other variables need to be quoted
-                 aes_string(x="popID",
+                 aes_string(x="Region",
                             y= input$Trait,
-                            fill="Region" #population compare traits in Regions
+                            fill="popID" #population compare traits in Regions
                  )
     )
     
@@ -45,10 +47,10 @@ shinyServer(function(input, output) {
     pl + geom_boxplot()
   })
   output$point <- renderPlot({
-    ps <- ggplot(data.pheno.mds, aes(V1, V2, color = Region))
+    data.sub <- subset(data.pheno.mds, Region == input$Subset)
+    ps <- ggplot(data.sub, aes(V1, V2), fill = "popID")
     ps + geom_point()
   })
 
 })
-
 

@@ -20,11 +20,17 @@ shinyUI(fluidPage( #create the overall page
                   numeric.traits
       )
     ),
-    
-    
+  
+    sidebarLayout(
+      sidebarPanel(
+        selectInput("Subset",
+                     "Choose a Region to display:",
+                    regions
+        )),
     # Show a plot of the generated distribution
     mainPanel(plotOutput("boxPlot"),
               plotOutput("point")
     )
   )
+)
 ))
