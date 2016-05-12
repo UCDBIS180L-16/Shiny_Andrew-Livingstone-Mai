@@ -3,7 +3,7 @@ library(ggplot2)
 library(reshape2)
 
 # Load the data here so that the app doesn't have to do it each time user selects output
-load("~/Shiny_Andrew-Livingstone-Mai/data_from_Rice_lab.Rdata")
+load("data_from_Rice_lab.Rdata")
 
 # This creates the data.pheno.mds object which we will use
 
